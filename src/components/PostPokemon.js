@@ -1,0 +1,34 @@
+import React, {useState} from 'react'
+
+const PostPokemon = ( {setPokemons} ) => {
+
+  const [inputValue, setinputValue] = useState('');
+
+  const handleInputChange = ( e ) => {
+    setinputValue( e.target.value )
+  }
+
+
+  const handleFormSubmit = ( e ) => {
+    e.preventDefault();
+
+    if( inputValue.trim().length > 1 ){
+      setPokemons( pokemons => [inputValue, ...pokemons] )
+      setinputValue('')
+    }
+
+  }
+
+  return (
+    <form onSubmit={ handleFormSubmit }>
+      <input 
+        value={ inputValue } 
+        onChange={ handleInputChange } 
+      />
+
+      <input type='submit' />
+    </form>
+  )
+}
+
+export default PostPokemon
