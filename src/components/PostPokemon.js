@@ -17,6 +17,8 @@ const PostPokemon = ( {setPokemons} ) => {
       setinputValue('')
     }
 
+    //setPokemons tiene que ser un hook, donde le puedo agregar momentaneamente otro valor desde un input
+
   }
 
   return (
