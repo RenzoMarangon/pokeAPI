@@ -1,12 +1,12 @@
 import React from 'react'
-import PokemonCard from './PokemonCard';
+import PokemonCard from '../pokemonCard/PokemonCard';
 
 const ContainerPokemons = ( {pokemons} ) => {
   return (
     <ul className="pokemons-container">
         {
                 pokemons.map( pokemon => {
-                    return <PokemonCard key={pokemon.id} {...pokemon} />
+                    return <PokemonCard className='pokemon-card' key={pokemon.id} {...pokemon} />
                 })
         }
     </ul>

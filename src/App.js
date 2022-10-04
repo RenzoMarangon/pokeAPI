@@ -1,17 +1,20 @@
-import './App.css';
-import ContainerPokemons from './components/ContainerPokemons';
-import Header from './components/Header';
-import { login } from './helpers/pokemonsAPI';
+import './css/app.css'
+import ContainerPokemons from './components/containerPokemon/ContainerPokemons';
+import Header from './components/header/Header';
+import { login,deletePokemon,getPokemons, getPokemon} from './helpers/pokemonsAPI';
 import { useGetPokemons } from './hooks/pokemons';
+import UseCustomHooks from './components/UseCustomHooks';
+
 
 function App() {
 
-  const { loading, data:pokemons } = useGetPokemons();
+  
+  let { loading, data:pokemons } = useGetPokemons();
 
   return (
     <div className="App">
-      <Header name = "Wachinx"/>
 
+      <Header />
       {
         loading 
                 ? 'cargando...'
@@ -19,6 +22,9 @@ function App() {
       }
 
       <button onClick={login}>Click</button>
+
+
+      <UseCustomHooks />
     </div>
   );
 }

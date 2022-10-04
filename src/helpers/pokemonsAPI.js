@@ -90,8 +90,78 @@ const postPokemon = ( ) =>{
     })
 }
 
+const searchPokemon = ( ) =>{
+    const poke_token = JSON.parse( sessionStorage.getItem('poke_token') )
+    // const url = 'http://localhost:8080/api/pokemon/';
+    const url = 'https://poke-apix.herokuapp.com/api/search/pokemons/';
+
+
+    const data = {
+        name:'Bobosaur',
+        numberID:'500',
+        generation:'1',
+        type:"Grass",
+        stats:{
+            attack:'50',
+            defense:'50',
+            resistance:'50',
+            hp:'5000'
+        },
+        evolutionLevel:'27'
+    }
+
+    const config ={
+        headers:{
+            poke_token
+        }
+    }
+
+    axios.post( 
+        url, 
+        data,
+        config
+    )
+    .then((resp)=>{
+        console.log(resp)
+    })
+    .catch(({response})=>{
+        const { data } = response;
+        console.log(data)
+        return
+    })
+}
+
+const deletePokemon = ( id ) => {
+    const poke_token = JSON.parse( sessionStorage.getItem('poke_token') )
+    const url = `https://poke-apix.herokuapp.com/api/pokemon/${ id }`;
+
+    const config ={
+        headers:{
+            poke_token
+        }
+    }
+
+    axios.delete(url, config).then(console.log)
+}
+
+const getPokemon = async (id, setPokemon ) =>  {
+    const url = `https://poke-apix.herokuapp.com/api/pokemon/${ id }`;
+
+    await axios.get( url )
+        .then( ({data} ) => {
+            setPokemon && setPokemon( data )
+            return data
+        })
+
+} 
+
+
+
+
 export {
     getPokemons,
     login,
-    postPokemon
+    postPokemon,
+    deletePokemon,
+    getPokemon
 }

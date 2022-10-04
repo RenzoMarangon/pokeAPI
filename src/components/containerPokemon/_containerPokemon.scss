@@ -1,0 +1,9 @@
+.pokemons-container{
+    max-width: 1440px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    .pokemons-card{
+        
+    }
+}

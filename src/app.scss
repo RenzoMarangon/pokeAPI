@@ -1,0 +1,13 @@
+@import './components/header/header';
+@import './components/pokemonCard/pokemonCard';
+@import './components/containerPokemon/containerPokemon';
+
+:root{
+    --bgColor:#F6F8FC;
+    --fontColor:#6e6e6e;
+}
+
+body{
+    background-color: var(--bgColor);
+
+}
